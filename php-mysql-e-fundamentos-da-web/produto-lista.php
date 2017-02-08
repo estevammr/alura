@@ -12,6 +12,7 @@
       <th>Nome</th>
       <th>Preço</th>
       <th>Descrição</th>
+      <th>Categoria</th>
     </tr>
   </thead>
   <?php
@@ -24,6 +25,7 @@
       <td><?=$produto['nome']?></td>
       <td><?=$produto['preco']?></td>
       <td><?=substr($produto['descricao'], 0, 40)?></td>
+      <td><?=$produto['categoria_nome']?></td>
       <td>
       <form action="remove-produto.php" method="post">
         <input type="hidden" name="id" value="<?=$produto['id']?>">

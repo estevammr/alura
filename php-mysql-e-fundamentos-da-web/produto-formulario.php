@@ -1,4 +1,9 @@
-<?php include("cabecalho.php"); ?>
+<?php include("cabecalho.php"); 
+  include ("conecta.php");
+  include ("banco-categoria.php");
+
+$categorias = listaCategorias($conexao);
+?>
   <h1>Formulário de cadastro</h1>
   <form action="adiciona-produto.php" method="post">
     Nome: 
@@ -8,9 +13,11 @@
     Descrição:
     <textarea name="descricao"></textarea><br><br>
     Categoria:
-    <input type="radio" name="categoria" value="1">Esporte
-    <input type="radio" name="categoria" value="1">Escolar
-    <input type="radio" name="categoria" value="1">Mobilidade<br><br>
+    <?php foreach($categorias as $categoria): ?>
+      <input type="radio" name="categoria_id" value="<?=$categoria['id']?>">
+      <?=$categoria['nome']?>
+    <?php endforeach ?>
+    
     <input class="btn btn-primary" type="submit" value="Cadastrar">
   </form>
 <?php include("rodape.php"); ?>
