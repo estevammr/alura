@@ -7,6 +7,10 @@
     <input type="number" name="preco"><br><br>
     Descrição:
     <textarea name="descricao"></textarea><br><br>
-    <input class="btn btn-primary" type="submit" value="Cadastrar" />
+    Categoria:
+    <input type="radio" name="categoria" value="1">Esporte
+    <input type="radio" name="categoria" value="1">Escolar
+    <input type="radio" name="categoria" value="1">Mobilidade<br><br>
+    <input class="btn btn-primary" type="submit" value="Cadastrar">
   </form>
 <?php include("rodape.php"); ?>
