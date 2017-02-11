@@ -12,12 +12,14 @@ $categorias = listaCategorias($conexao);
     <input type="number" name="preco"><br><br>
     Descrição:
     <textarea name="descricao"></textarea><br><br>
+    <input type="checkbox" name="usado" value="true"> Usado
+    <br><br>
     Categoria:
-    <?php foreach($categorias as $categoria): ?>
-      <input type="radio" name="categoria_id" value="<?=$categoria['id']?>">
-      <?=$categoria['nome']?>
-    <?php endforeach ?>
-    
-    <input class="btn btn-primary" type="submit" value="Cadastrar">
+    <select name="categoria_id">
+      <?php foreach($categorias as $categoria): ?>
+        <option value="<?=$categoria['id']?>"><?=$categoria['nome']?></option>
+      <?php endforeach ?>
+    </select>
+    <button class="btn btn-primary" type="submit">Cadastrar</button>
   </form>
 <?php include("rodape.php"); ?>
