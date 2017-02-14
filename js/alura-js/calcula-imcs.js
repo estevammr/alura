@@ -1,6 +1,6 @@
 //calcula-imc.js
 var peso = 100;
-var altura = 0; //testando com 0
+var altura = 2.0; //testando com 0
 
 if(altura != 0){
     var imc = peso / (altura * altura);
