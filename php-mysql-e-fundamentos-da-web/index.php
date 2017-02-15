@@ -14,6 +14,13 @@ if(isset($_GET["login"]) && $_GET["login"]==false) {
 <?php
 }
 ?>
+<?php
+if(isset($_COOKIE["usuario_logado"])) {
+?>
+<p class="text-success">Você está logado como <?= $_COOKIE["usuario_logado"] ?></p>
+<?php
+} else {
+?>
 <h2>Login</h2>
             <form action="login.php" method="post">
             <table class="table">
@@ -30,4 +37,7 @@ if(isset($_GET["login"]) && $_GET["login"]==false) {
                 </tr>
             </table>
             </form>
+<?php
+}
+?>
 <?php include("rodape.php"); ?>
