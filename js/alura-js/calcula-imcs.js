@@ -1,20 +1,40 @@
-var peso = document.getElementById("peso-1").textContent; // pega o peso do paciente
-var altura = document.getElementById("altura-1").textContent; // pega a altura do paciente
-var nome = document.getElementById("nome-1").textContent; // pega o nome do paciente
+var botao = document.getElementById("calcula-imcs");
 
-var paciente = {
-    peso : peso,
-    altura : altura,
-    nome : nome
-}
+botao.addEventListener("click", function() {
 
-if(paciente.altura != 0){
-    var imc = paciente.peso / (paciente.altura * paciente.altura);
+	var trsPacientes = document.getElementsByClassName("paciente");
 
-    var tdDoImc = document.getElementById("imc-1"); // pega o td do imc do paciente 1
-    tdDoImc.textContent = imc; //Altera o conteúdo do td para o valor da variável imc
+	percorreArray(trsPacientes, function calculaImc(pacienteTr) {
 
-    console.log(imc);
-}else{
-    console("Não posso executar uma divisão por 0!");
-}
+		var paciente = montaPaciente(pacienteTr);
+		var imc = paciente.pegaImc();
+
+		var tdImc = pacienteTr.getElementsByClassName("info-imc")[0];
+		tdImc.textContent = imc;	
+		console.log(imc);
+	});
+
+	function montaPaciente(pacienteTr){
+	    var tdNome = pacienteTr.getElementsByClassName("info-nome")[0]; 
+	    var tdPeso = pacienteTr.getElementsByClassName("info-peso")[0]; 
+	    var tdAltura = pacienteTr.getElementsByClassName("info-altura")[0];
+
+	    var paciente = {
+	        nome : tdNome.textContent, 
+	        peso : tdPeso.textContent, 
+	        altura : tdAltura.textContent,
+	        pegaImc: function() {
+
+	            if(this.altura != 0){
+	                var imc = this.peso / (this.altura * this.altura);
+	                return imc;
+	            } else{
+
+	                console("Não posso dividir por zero!");
+	            }
+	        }
+	    }
+	    return paciente;
+	}
+
+});
