@@ -3,25 +3,18 @@
   include ("banco-categoria.php");
   include("logica-usuario.php");
 
-verificaUsuario();
+verificaUsuario();]
+
+$produto = array("nome" => "", "descricao" => "", "preco" => "", "categoria_id" => "1");
+$usado = "";
+
 $categorias = listaCategorias($conexao);
 ?>
   <h1>Formulário de cadastro</h1>
   <form action="adiciona-produto.php" method="post">
-    Nome: 
-    <input type="text" name="nome"><br><br>
-    Preço: 
-    <input type="number" name="preco"><br><br>
-    Descrição:
-    <textarea name="descricao"></textarea><br><br>
-    <input type="checkbox" name="usado" value="true"> Usado
-    <br><br>
-    Categoria:
-    <select name="categoria_id">
-      <?php foreach($categorias as $categoria): ?>
-        <option value="<?=$categoria['id']?>"><?=$categoria['nome']?></option>
-      <?php endforeach ?>
-    </select>
+    
+    <?php include "produto-formulario-base.php"; ?>
+    
     <button class="btn btn-primary" type="submit">Cadastrar</button>
   </form>
 <?php include("rodape.php"); ?>
