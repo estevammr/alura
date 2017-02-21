@@ -1,6 +1,6 @@
 <?php require_once("cabecalho.php");
   require_once("banco-produto.php");
-  require_once("logica-usuario.php");
+  require_once("logica-usuario.php"); 
 
 verificaUsuario();
 
@@ -8,8 +8,6 @@ $nome  = $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
 $categoria_id = $_POST["categoria_id"];
-
-$conexao = mysqli_connect('localhost', 'root', '1234', 'loja');
 
 if(array_key_exists("usado", $_POST)) {
     $usado = "true";

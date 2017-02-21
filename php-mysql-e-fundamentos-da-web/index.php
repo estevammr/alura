@@ -5,7 +5,7 @@
 <?php
 if(usuarioEstaLogado()) {
 ?>
-<p class="text-success">Você está logado como <?= usuarioLogado() ?><a href="logout.php">Deslogar</a></p>
+<p class="text-success">Você está logado como <?= usuarioLogado() ?><a href="logout.php"> Deslogar</a></p>
 <?php
 } else {
 ?>
