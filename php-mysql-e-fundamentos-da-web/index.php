@@ -1,8 +1,6 @@
 <?php 
-    include("cabecalho.php");
-    include("logica-usuario.php");
-    include("mostra-alerta.php");?>
-    
+    require_once("cabecalho.php");
+    require_once("logica-usuario.php");?>
 <h1>Bem-vindo</h1>
 <?php
 if(usuarioEstaLogado()) {
@@ -30,4 +28,4 @@ if(usuarioEstaLogado()) {
 <?php
 }
 ?>
-<?php include("rodape.php"); ?>
+<?php require_once("rodape.php"); ?>

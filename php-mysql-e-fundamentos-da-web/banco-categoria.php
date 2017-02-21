@@ -1,4 +1,4 @@
-<?php
+<?php require_once("conecta.php");
 
 function listaCategorias($conexao) {
   $categorias = array();

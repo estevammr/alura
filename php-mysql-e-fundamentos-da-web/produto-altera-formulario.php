@@ -1,7 +1,6 @@
-<?php include("cabecalho.php"); 
-  include ("conecta.php");
-  include ("banco-categoria.php");
-  include ("banco-produto.php");
+<?php require_once("cabecalho.php"); 
+  require_once ("banco-categoria.php");
+  require_once ("banco-produto.php");
 
 $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
@@ -12,8 +11,8 @@ $categorias = listaCategorias($conexao);
   <form action="altera-produto.php" method="post">
     <input type="hidden" name="id" value="<?=$produto['id']?>" />
     
-    <?php include "produto-formulario-base.php"; ?>
+    <?php require_once "produto-formulario-base.php"; ?>
     
     <button class="btn btn-primary" type="submit">Alterar</button>
   </form>
-<?php include("rodape.php"); ?>
+<?php require_once("rodape.php"); ?>
