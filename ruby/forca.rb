@@ -24,7 +24,7 @@ def pede_um_chute_valido(chutes, erros, mascara)
   end
 end
 
-def joga
+def joga nome
 	palavra_secreta = sorteia_palavra_secreta
 
 	erros = 0
