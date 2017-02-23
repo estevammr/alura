@@ -2,7 +2,7 @@
   require_once ("banco-categoria.php");
   require_once("logica-usuario.php");
 
-verificaUsuario();]
+verificaUsuario();
 
 $produto = array("nome" => "", "descricao" => "", "preco" => "", "categoria_id" => "1");
 $usado = "";

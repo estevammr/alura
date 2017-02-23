@@ -29,7 +29,5 @@ require_once("mostra-alerta.php"); ?>
     <div class="container">
         <div class="principal">
     <!-- fim cabecalho.php -->
-    <?php
-        mostraAlerta["success"];
-        mostraAlerta["danger"];
-    ?>
+    <?php mostraAlerta("success"); ?>
+    <?php mostraAlerta("danger"); ?>
