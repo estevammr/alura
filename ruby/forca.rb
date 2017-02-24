@@ -1,6 +1,16 @@
 require_relative 'ui'
+require_relative 'rank'
 
-def palavra_mascarada(chutes, palavra_secreta)
+def sorteia_palavra_secreta
+  avisa_escolhendo_palavra
+  texto = File.read("dicionario.txt")
+  todas_as_palavras = texto.split("\n")
+  numero_aleatorio = rand(todas_as_palavras.size)
+  palavra_secreta = todas_as_palavras[numero_aleatorio].downcase
+  avisa_palavra_escolhida palavra_secreta
+end
+
+def palavra_mascarada chutes, palavra_secreta
   mascara = ""
   for letra in palavra_secreta.chars
     if chutes.include? letra
@@ -12,7 +22,7 @@ def palavra_mascarada(chutes, palavra_secreta)
   mascara
 end
 
-def pede_um_chute_valido(chutes, erros, mascara)
+def pede_um_chute_valido chutes, erros, mascara
 	cabecalho_de_tentativa chutes, erros, mascara
 	loop do
     chute = pede_um_chute
@@ -59,13 +69,22 @@ def joga nome
 		end
 	end
 	avisa_pontos_ganhos pontos_ate_agora
+  pontos_ate_agora
 end
 
 def jogo_da_forca
 	nome = da_boas_vindas
+  pontos_totais = 0
 
+  avisa_campeao_atual le_rank
 	loop do
-		joga nome
+		pontos_totais += joga nome
+    avisa_pontos_totais pontos_totais
+
+    if le_rank[1].to_i < pontos_totais
+      salva_rank nome, pontos_totais
+    end
+
 		break if nao_quer_jogar?
 	end
 end
