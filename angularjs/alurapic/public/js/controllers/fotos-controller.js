@@ -1,8 +1,14 @@
-angular.module('alurapic').controller('FotosController', ['$scope', function($scope){
+angular.module('alurapic').controller('FotosController', ['$scope', '$http', function($scope, $http){
     
-  $scope.foto = {
-    url: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS0H6_8T93B9doxf8I0uUNfuHEjfwFH3FyNt5y_cDHnFA_OEP5x",
-    titulo: "Tigrão da porra"
-  };
+  $scope.fotos = [];
+  $scope.filtro = '';
+  
+  $http.get('v1/fotos')
+  .success(function(fotos) {
+    $scope.fotos = fotos;  
+  })
+  .error(function(erro) {
+    console.log(erro);
+  });
 
 }]);
