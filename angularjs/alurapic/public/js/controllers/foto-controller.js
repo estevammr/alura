@@ -35,6 +35,7 @@ angular.module('alurapic')
           $http.post('/v1/fotos', $scope.foto)
           .success(function() {
               $scope.foto = {};
+              $scope.formulario.$setPristine();
               $scope.mensagem = 'Foto cadastrada com sucesso';
           })
           .error(function(erro) {
