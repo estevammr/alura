@@ -1,7 +1,17 @@
 <?php
 
-$teste = "true" == true;
-$teste2 = "true" === true;
+    require "class/Produto.php";
 
-echo "teste => " . $teste . "<br>";
-echo "teste2 => " . $teste2;
+    $produto = new Produto();
+    $produto->setPreco(59.9);
+    $produto->setNome("Livro da Casa do Codigo");
+
+    $outroProduto = $produto;
+    $outroProduto->setPreco(100.6);
+    $outroProduto->setNome("Livro da Casa do Codigo");
+
+    if ($produto === $outroProduto) {
+        echo "sao iguais";
+    } else {
+        echo "sao diferentes";
+    }
