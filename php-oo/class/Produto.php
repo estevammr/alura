@@ -32,6 +32,14 @@ class Produto
     $this->nome = $nome;
   }
 
+  public function getPreco() {
+    return $this->preco;
+  }
+
+  public function setPreco($preco) {
+    $this->preco = $preco;
+  }
+
   public function getDescricao() {
     return $this->descricao;
   }

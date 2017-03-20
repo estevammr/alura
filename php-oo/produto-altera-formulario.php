@@ -7,13 +7,13 @@ $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
 $categorias = listaCategorias($conexao);
 
-$selecao_usado = $produto->usado ? "checked='checked'" : "";
-$produto->usado = $selecao_usado;
+$selecao_usado = $produto->getUsado() ? "checked='checked'" : "";
+$produto->setUsado($selecao_usado);
 
 ?>
   <h1>Formulário de alteração</h1>
   <form action="altera-produto.php" method="post">
-    <input type="hidden" name="id" value="<?= $produto->id ?>" />
+    <input type="hidden" name="id" value="<?= $produto->getId() ?>" />
     
     <?php include("produto-formulario-base.php"); ?>
     

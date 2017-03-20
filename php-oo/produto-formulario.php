@@ -7,10 +7,10 @@ require_once("class/Produto.php");
 verificaUsuario();
 
 $categoria = new Categoria();
-$categoria->id = 1;
+$categoria->setId(1);
 
 $produto = new Produto();
-$produto->categoria = $categoria;
+$produto->setCategoria($categoria);
 
 $usado = "";
 

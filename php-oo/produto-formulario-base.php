@@ -1,11 +1,11 @@
 Nome: 
-<input type="text" name="nome" value="<?= $produto->nome ?>"><br><br>
+<input type="text" name="nome" value="<?= $produto->getNome() ?>"><br><br>
 Preço: 
-<input type="number" name="preco" value="<?= $produto->preco ?>"><br><br>
+<input type="number" name="preco" value="<?= $produto->getPreco() ?>"><br><br>
 Descrição:
-<textarea name="descricao"><?= $produto->descricao ?></textarea><br><br>
+<textarea name="descricao"><?= $produto->getDescricao() ?></textarea><br><br>
 <?php
-  $usado = $produto->usado ? "checked='checked'" : "";
+  $usado = $produto->getUsado() ? "checked='checked'" : "";
 ?>
 <input type="checkbox" name="usado" <?= $usado ?> value="true"> Usado
 <br><br>
@@ -13,11 +13,11 @@ Categoria:
 <select name="categoria_id">
 <?php 
   foreach($categorias as $categoria) : 
-    $essaEhACategoria = $produto->categoria->id == $categoria->id;
+    $essaEhACategoria = $produto->getCategoria()->getId() == $categoria->getId();
     $selecao = $essaEhACategoria ? "selected='selected'" : "";
 ?>
-  <option value="<?= $categoria->id ?>" <?=$selecao?>>
-    <?= $categoria->nome ?>
+  <option value="<?= $categoria->getId() ?>" <?=$selecao?>>
+    <?= $categoria->getNome() ?>
   </option>
 <?php endforeach ?>
 </select>
