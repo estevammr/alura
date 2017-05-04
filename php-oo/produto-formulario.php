@@ -9,10 +9,7 @@ verificaUsuario();
 $categoria = new Categoria();
 $categoria->setId(1);
 
-$produto = new Produto();
-$produto->setCategoria($categoria);
-
-$usado = "";
+$produto = new Produto("", "", "", $categoria, "");
 
 $categorias = listaCategorias($conexao);
 ?>

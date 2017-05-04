@@ -4,21 +4,20 @@ require_once("banco-produto.php");
 require_once("class/Produto.php");
 require_once("class/Categoria.php");
 
+$nome = $_POST['nome'];
+$preco = $_POST['preco'];
+$descricao = $_POST['descricao'];
 $categoria = new Categoria();
 $categoria->setId($_POST['categoria_id']);
 
-$produto = new Produto(); 
-$produto->setId($_POST['id']);
-$produto->setNome($_POST['nome']);
-$produto->setPreco($_POST['preco']);
-$produto->setDescricao($_POST['descricao']);
-$produto->setCategoria($categoria);
-
 if(array_key_exists('usado', $_POST)) {
-    $produto->setUsado("true");
+    $usado = "true";
 } else {
-    $produto->setUsado("false");
+    $usado = "false";
 }
+
+$produto = new Produto($nome, $preco, $descricao, $categoria, $usado); 
+$produto->setId($_POST['id']);
 
 if(alteraProduto($conexao, $produto)) { ?>
     <p class="text-success">O produto <?= $produto->getNome() ?>, <?= $produto->getPreco() ?> foi alterado.</p>
