@@ -1,6 +1,6 @@
 <template>
-  <div class="corpo">
-    <h1 class="titulo">{{ titulo }}</h1>
+  <div>
+    <h1 class="centralizado">{{ titulo }}</h1>
     <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por título">
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
@@ -53,14 +53,8 @@ export default {
 
 <style>
   
-  .titulo {
+  .centralizado {
     text-align: center;
-  }
-
-  .corpo {
-    font-family: Helvetica, sans-serif;
-    margin: 0 auto;
-    width: 96%;
   }
 
   .lista-fotos {

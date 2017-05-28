@@ -1,61 +1,32 @@
 <template>
   <div class="corpo">
-    <h1 class="titulo">{{ titulo }}</h1>
-    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por título">
-    <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
-        <meu-painel :titulo="foto.titulo">
-         <minha-imagem :url="foto.url" :titulo="foto.titulo"></minha-imagem>
-        </meu-painel>
-      </li>
-    </ul>
+    <meu-menu :rotas="routes"></meu-menu>
+    <transition name="pagina-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import Painel from './components/shared/painel/Painel.vue'
-import ImagemResponsiva from './components/shared/imagem-responsiva/ImagemResponsiva.vue'
+
+import { routes } from './routes'
+import Menu from './components/shared/menu/Menu.vue'
 
 export default {
-  
-  components: {
-    'meu-painel': Painel,
-    'minha-imagem': ImagemResponsiva
-  },
 
+  components: {
+    'meu-menu': Menu
+  },
+  
   data() {
     return {
-      titulo: 'Alurapic',
-      fotos: [],
-      filtro: ''
+      routes 
     }
-  },
-
-  computed: {
-    fotosComFiltro() {
-      if (this.filtro) {
-        let exp = new RegExp(this.filtro.trim(), 'i')
-        return this.fotos.filter(foto => exp.test(foto.titulo))
-      } else {
-        return this.fotos
-      }
-    }
-  },
-
-  created() {
-    this.$http.get('http://localhost:3000/v1/fotos')
-      .then(res => res.json())
-      .then(fotos => this.fotos = fotos, err => console.log(err))
   }
-
 }
 </script>
 
 <style>
-  
-  .titulo {
-    text-align: center;
-  }
 
   .corpo {
     font-family: Helvetica, sans-serif;
@@ -63,17 +34,12 @@ export default {
     width: 96%;
   }
 
-  .lista-fotos {
-    list-style: none;
+  .pagina-fade-enter, .pagina-fade-leave-active {
+    opacity: 0;
   }
 
-  .lista-fotos .lista-fotos-item {
-    display: inline-block;
-  }
-
-  .filtro {
-    display: block;
-    width: 100%;
+  .pagina-fade-enter-active, .pagina-fade-leave-active {
+    transition: opacity .8s;
   }
 
 </style>
